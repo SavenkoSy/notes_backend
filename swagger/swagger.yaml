@@ -1,0 +1,135 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+servers:
+- url: http://localhost:3000
+  description: Local environment
+  variables:
+    defaultHost:
+      default: http://localhost:3000
+- url: http://localhost:3300
+  description: Docker environment
+  variables:
+    defaultHost:
+      default: http://localhost:3300
+paths:
+  "/api/notes":
+    post:
+      summary: Creates a note
+      tags:
+      - Notes
+      parameters: []
+      responses:
+        '200':
+          description: note created
+          content:
+            application/json:
+              examples:
+                ok:
+                  value:
+                    data:
+                      title: title
+                      content: content
+                      created_at: '2024-01-01T01:01:01.011Z'
+                      updated_at: '2024-01-01T01:01:01.011Z'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+              required:
+              - title
+              - content
+    get:
+      summary: Search for notes
+      tags:
+      - Notes
+      parameters:
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: list of notes
+  "/api/notes/{id}":
+    delete:
+      summary: Update a note
+      tags:
+      - Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: id of note
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: note is deleted
+    get:
+      summary: Show a note
+      tags:
+      - Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: id of note
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: note created
+          content:
+            application/json:
+              examples:
+                ok:
+                  value:
+                    data:
+                      title: title
+                      content: content
+                      created_at: '2024-01-01T01:01:01.011Z'
+                      updated_at: '2024-01-01T01:01:01.011Z'
+    patch:
+      summary: Update a note
+      tags:
+      - Notes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: id of note
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: note created
+          content:
+            application/json:
+              examples:
+                ok:
+                  value:
+                    data:
+                      title: title
+                      content: content
+                      created_at: '2024-01-01T01:01:01.011Z'
+                      updated_at: '2024-01-01T01:01:01.011Z'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string

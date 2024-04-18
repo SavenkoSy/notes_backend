@@ -1,0 +1,83 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.0
+  Exclude:
+    - bin/*
+    - config/environments/*
+    - config/puma.rb
+  NewCops: disable
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+
+# Layout
+Layout/LineLength:
+  Max: 120
+
+Layout/ArrayAlignment:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+# Metrics
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - config/initializers/*
+    - app/controllers/concerns/*
+
+Metrics/AbcSize:
+  Exclude:
+    - spec/spec_helper.rb
+
+# Rspec
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - spec/integration/**/*
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/integration/**/*
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 6
+
+RSpec/ImplicitBlockExpectation:
+  Enabled: false
+
+RSpec/ScatteredSetup:
+  Exclude:
+    - spec/integration/**/*.rb
+
+# Style
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+# Others
+Lint/MissingSuper:
+  Enabled: false

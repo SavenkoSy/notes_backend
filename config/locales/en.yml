@@ -1,0 +1,10 @@
+en:
+  response_errors:
+    not_found:
+      error: Not Found
+  dry_validation:
+    errors:
+      note:
+        rules:
+          title:
+            already_exist: Note with this title already exist.
